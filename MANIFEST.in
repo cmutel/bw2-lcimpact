@@ -1,0 +1,4 @@
+include README.rst
+include *.txt
+include bw2_lcimpact/*.py
+include bw2_lcimpact/data/*/*.*
