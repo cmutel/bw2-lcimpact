@@ -23,6 +23,7 @@ setup(
     license=open('LICENSE.txt').read(),
     install_requires=[
         "brightway2",
+        "wrapt",
     ],
     url="https://github.com/cmutel/bw2-lcimpact",
     long_description=open('README.rst').read(),
