@@ -8,7 +8,6 @@ docs/.ipynb*
 docs/_static
 docs/_templates
 docs/_build
-dev
 build
 cover
 htmlcov
