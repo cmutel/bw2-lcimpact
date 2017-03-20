@@ -5,8 +5,22 @@ from .water import (
     WaterEcosystemQualityCore,
     WaterEcosystemQualityExtended,
 )
+from .land_use import (
+    LandUseOccupationMarginal,
+    LandUseOccupationAverage,
+    LandUseTransformationMarginalCore,
+    LandUseTransformationMarginalExtended,
+    LandUseTransformationAverageCore,
+    LandUseTransformationAverageExtended,
+)
 
 METHODS = (
+    LandUseOccupationMarginal,
+    LandUseOccupationAverage,
+    LandUseTransformationMarginalCore,
+    LandUseTransformationMarginalExtended,
+    LandUseTransformationAverageCore,
+    LandUseTransformationAverageExtended,
     ParticulateMatterFormation,
     WaterHumanHealthMarginal,
     WaterHumanHealthAverage,
