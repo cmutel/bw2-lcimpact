@@ -1,5 +1,4 @@
-from bw2regional import geocollections
-from .base import LCIA, data_dir, fiona, regionalized
+from .base import LCIA, data_dir, fiona, regionalized, geocollections
 import os
 
 GLOBAL_CFS = {
@@ -34,6 +33,7 @@ class ParticulateMatterFormation(LCIA):
     Only the 'core' level of uncertainty is provided."""
     url = "http://www.lc-impact.eu/human-health-particular-matter-formation"
 
+    @regionalized
     def setup_geocollections(self):
         if self.geocollection not in geocollections:
             geocollections[self.geocollection] = {

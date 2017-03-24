@@ -20,13 +20,14 @@ setup(
     packages=packages,
     author="Chris Mutel",
     author_email="cmutel@gmail.com",
-    license=open('LICENSE.txt').read(),
+    license=open('LICENSE.txt', encoding='utf-8').read(),
     install_requires=[
         "brightway2",
         "wrapt",
     ],
+    package_data={'bw2_lcimpact': ["data/*.*"]},
     url="https://github.com/cmutel/bw2-lcimpact",
-    long_description=open('README.rst').read(),
+    long_description=open('README.rst', encoding='utf-8').read(),
     description=('LC IMPACT regionalized LCIA method for Brightway2'),
     classifiers=[
         'Development Status :: 5 - Production/Stable',

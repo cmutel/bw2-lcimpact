@@ -1,6 +1,6 @@
-from bw2regional import geocollections
-from .base import LCIA, data_dir, fiona, regionalized
+from .base import LCIA, data_dir, fiona, regionalized, geocollections
 import os
+
 
 flow_mapping = {
     'annual': [
@@ -65,6 +65,7 @@ class LandUse(LCIA):
     Only the 'core' level of uncertainty is provided for occupation."""
     url = "http://www.lc-impact.eu/ecosystem-quality-land-stress"
 
+    @regionalized
     def setup_geocollections(self):
         if self.geocollection not in geocollections:
             geocollections[self.geocollection] = {

@@ -1,5 +1,4 @@
-from bw2regional import geocollections
-from .base import LCIA, data_dir, fiona, regionalized
+from .base import LCIA, data_dir, fiona, regionalized, geocollections
 import os
 
 """When is water not water? When it is in water!
@@ -54,6 +53,7 @@ class WaterHumanHealthMarginal(Water):
     Only the 'core' level of uncertainty is provided."""
     url = "http://www.lc-impact.eu/human-health-water-stress"
 
+    @regionalized
     def setup_geocollections(self):
         if self.geocollection not in geocollections:
             geocollections[self.geocollection] = {
@@ -100,6 +100,9 @@ class WaterEcosystemQualityCore(Water):
     description = """The description of the impact assessment approach for quantifying impacts from water consumption on biodiversity is based on Verones et al. (submitted), which is a continuation from Verones et al. (2013a) and Verones et al. (2013b), as well as Chaudhary et al. (2015)."""
     url = "http://www.lc-impact.eu/ecosystem-quality-water-stress"
 
+    _flows_label = 'surface'
+
+    @regionalized
     def setup_geocollections(self):
         if self.geocollection not in geocollections:
             geocollections[self.geocollection] = {
@@ -108,12 +111,12 @@ class WaterEcosystemQualityCore(Water):
             }
 
     def global_cfs(self):
-        for key in self._water_flows('surface'):
+        for key in self._water_flows(self._flows_label):
             yield((key, self.global_cf, "GLO"))
 
     @regionalized
     def regional_cfs(self):
-        water_flows = list(self._water_flows('surface'))
+        water_flows = list(self._water_flows(self._flows_label))
 
         for obj in self.global_cfs():
             yield obj
@@ -135,3 +138,5 @@ class WaterEcosystemQualityExtended(WaterEcosystemQualityCore):
 
     name = ("LC-IMPACT", "Water Use", "Ecosystem Quality", "Surface Water", "Marginal", "Extended uncertainty")
     global_cf = 1.65E-13
+
+    _flows_label = 'all'

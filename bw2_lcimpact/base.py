@@ -3,11 +3,11 @@ import os
 import wrapt
 
 try:
-    from bw2regional import geocollections
+    from bw2regional import geocollections, remote
     import fiona
 except ImportError:
     fiona = None
-    geocollections = None
+    geocollections, remote = None, None
 
 data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "data"))
 
@@ -47,6 +47,7 @@ class LCIA:
             'unit': self.unit,
             'description': self.description,
             'url': self.url,
+            'geocollections': [self.geocollection]
         }
 
     def import_global_method(self):
