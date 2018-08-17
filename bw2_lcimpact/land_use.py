@@ -63,7 +63,7 @@ class LandUse(LCIA):
     description = """The method is based on the UNEP-SETAC guideline on global land use impact assessment on biodiversity in LCA (Koellner et al. 2013a) concerning the area of protection of ecosystem quality. The approach proposed by Chaudhary et al. 2015 using countryside species-area relationship (SAR) is used for calculating ecoregion specific marginal and average characterization factors (CFs) for biodiversity loss for both land occupation and transformation.
 
     Only the 'core' level of uncertainty is provided for occupation."""
-    url = "http://www.lc-impact.eu/ecosystem-quality-land-stress"
+    url = "http://lc-impact.eu/ecosystem-quality-land-stress"
 
     @regionalized
     def setup_geocollections(self):
