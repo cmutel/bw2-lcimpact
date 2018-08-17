@@ -62,7 +62,7 @@ class LandUse(LCIA):
 
     description = """The method is based on the UNEP-SETAC guideline on global land use impact assessment on biodiversity in LCA (Koellner et al. 2013a) concerning the area of protection of ecosystem quality. The approach proposed by Chaudhary et al. 2015 using countryside species-area relationship (SAR) is used for calculating ecoregion specific marginal and average characterization factors (CFs) for biodiversity loss for both land occupation and transformation.
 
-    Only the 'core' level of uncertainty is provided for occupation."""
+    Only the 'certain' level of uncertainty is provided for occupation."""
     url = "http://lc-impact.eu/ecosystem-quality-land-stress"
 
     @regionalized
@@ -112,7 +112,7 @@ class LandUseOccupation(LandUse):
 
 
 class LandUseOccupationMarginal(LandUseOccupation):
-    name = ("LC-IMPACT", "Land Use", "Occupation", "Marginal", "Core")
+    name = ("LC-IMPACT", "Land Use", "Occupation", "Marginal", "Certain")
     stem = "occup_marginal_"
 
     global_cf_dict = {
@@ -126,7 +126,7 @@ class LandUseOccupationMarginal(LandUseOccupation):
 
 
 class LandUseOccupationAverage(LandUseOccupation):
-    name = ("LC-IMPACT", "Land Use", "Occupation", "Average", "Core")
+    name = ("LC-IMPACT", "Land Use", "Occupation", "Average", "Certain")
     stem = "occup_average_"
 
     global_cf_dict = {
@@ -143,8 +143,8 @@ class LandUseTransformation(LandUse):
     unit = "PDF·yr/m2"
 
 
-class LandUseTransformationMarginalCore(LandUseTransformation):
-    name = ("LC-IMPACT", "Land Use", "Transformation", "Marginal", "Core")
+class LandUseTransformationMarginalCertain(LandUseTransformation):
+    name = ("LC-IMPACT", "Land Use", "Transformation", "Marginal", "Certain")
     stem = "trans_marginal_"
 
     global_cf_dict = {
@@ -157,8 +157,8 @@ class LandUseTransformationMarginalCore(LandUseTransformation):
     }
 
 
-class LandUseTransformationMarginalExtended(LandUseTransformation):
-    name = ("LC-IMPACT", "Land Use", "Transformation", "Marginal", "Extended")
+class LandUseTransformationMarginalAll(LandUseTransformation):
+    name = ("LC-IMPACT", "Land Use", "Transformation", "Marginal", "All")
     stem = "trans_marginal_"
     suffix = "_100"
 
@@ -172,8 +172,8 @@ class LandUseTransformationMarginalExtended(LandUseTransformation):
     }
 
 
-class LandUseTransformationAverageCore(LandUseTransformation):
-    name = ("LC-IMPACT", "Land Use", "Transformation", "Average", "Core")
+class LandUseTransformationAverageCertain(LandUseTransformation):
+    name = ("LC-IMPACT", "Land Use", "Transformation", "Average", "Certain")
     stem = "trans_average_"
 
     global_cf_dict = {
@@ -186,8 +186,8 @@ class LandUseTransformationAverageCore(LandUseTransformation):
     }
 
 
-class LandUseTransformationAverageExtended(LandUseTransformation):
-    name = ("LC-IMPACT", "Land Use", "Transformation", "Average", "Extended")
+class LandUseTransformationAverageAll(LandUseTransformation):
+    name = ("LC-IMPACT", "Land Use", "Transformation", "Average", "All")
     stem = "trans_average_"
     suffix = "_100"
 

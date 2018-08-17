@@ -50,7 +50,7 @@ class WaterHumanHealthMarginal(Water):
     unit = "DALY/m3"
     description = """The impact assessment method for assessing water consumption concerning the area of protection of human health is described based on Pfister et al. (2009) for the impact pathway (marginal CF), Pfister and Hellweg (2011) for uncertainty assessment, and Pfister and Bayer (2013) for average CFs.
 
-    Only the 'core' level of uncertainty is provided."""
+    Only the 'certain' level of uncertainty is provided."""
     url = "http://lc-impact.eu/human-health-water-stress"
 
     @regionalized
@@ -89,12 +89,12 @@ class WaterHumanHealthAverage(WaterHumanHealthMarginal):
     column = 'HH_AVG'
 
 
-class WaterEcosystemQualityCore(Water):
+class WaterEcosystemQualityCertain(Water):
     vector_ds = os.path.join(data_dir, "water_eq_sw_core.gpkg")
-    geocollection = 'watersheds-eq-sw-core'
+    geocollection = 'watersheds-eq-sw-certain'
     column = 'val'
 
-    name = ("LC-IMPACT", "Water Use", "Ecosystem Quality", "Surface Water", "Marginal", "Core uncertainty")
+    name = ("LC-IMPACT", "Water Use", "Ecosystem Quality", "Surface Water", "Marginal", "Certain")
     global_cf = 1.63E-13
     unit = "PDF·yr/m3"
     description = """The description of the impact assessment approach for quantifying impacts from water consumption on biodiversity is based on Verones et al. (submitted), which is a continuation from Verones et al. (2013a) and Verones et al. (2013b), as well as Chaudhary et al. (2015)."""
@@ -132,11 +132,11 @@ class WaterEcosystemQualityCore(Water):
                         )
 
 
-class WaterEcosystemQualityExtended(WaterEcosystemQualityCore):
+class WaterEcosystemQualityAll(WaterEcosystemQualityCertain):
     vector_ds = os.path.join(data_dir, "water_eq_sw_extended.gpkg")
-    geocollection = 'watersheds-eq-sw-extended'
+    geocollection = 'watersheds-eq-sw-all'
 
-    name = ("LC-IMPACT", "Water Use", "Ecosystem Quality", "Surface Water", "Marginal", "Extended uncertainty")
+    name = ("LC-IMPACT", "Water Use", "Ecosystem Quality", "Surface Water", "Marginal", "All")
     global_cf = 1.65E-13
 
     _flows_label = 'all'

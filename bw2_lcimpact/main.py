@@ -5,8 +5,8 @@ from .pm import (
 from .water import (
     WaterHumanHealthMarginal,
     WaterHumanHealthAverage,
-    WaterEcosystemQualityCore,
-    WaterEcosystemQualityExtended,
+    WaterEcosystemQualityCertain,
+    WaterEcosystemQualityAll,
 )
 from .climate import (
     ClimateChangeHumanHealthCertain100Years,
@@ -23,26 +23,26 @@ from .climate import (
 from .land_use import (
     LandUseOccupationMarginal,
     LandUseOccupationAverage,
-    LandUseTransformationMarginalCore,
-    LandUseTransformationMarginalExtended,
-    LandUseTransformationAverageCore,
-    LandUseTransformationAverageExtended,
+    LandUseTransformationMarginalCertain,
+    LandUseTransformationMarginalAll,
+    LandUseTransformationAverageCertain,
+    LandUseTransformationAverageAll,
 )
 from .base import remote, regionalized
 
 METHODS = (
     LandUseOccupationMarginal,
     LandUseOccupationAverage,
-    LandUseTransformationMarginalCore,
-    LandUseTransformationMarginalExtended,
-    LandUseTransformationAverageCore,
-    LandUseTransformationAverageExtended,
+    LandUseTransformationMarginalCertain,
+    LandUseTransformationMarginalAll,
+    LandUseTransformationAverageCertain,
+    LandUseTransformationAverageAll,
     ParticulateMatterFormationAll,
     ParticulateMatterFormationCertain,
     WaterHumanHealthAverage,
     WaterHumanHealthMarginal,
-    WaterEcosystemQualityCore,
-    WaterEcosystemQualityExtended,
+    WaterEcosystemQualityCertain,
+    WaterEcosystemQualityAll,
 )
 
 
@@ -61,8 +61,8 @@ def import_regionalized_lcimpact(biosphere='biosphere3'):
 
     try:
         remote.intersection("world", "watersheds-hh")
-        remote.intersection("world", "watersheds-eq-sw-core")
-        remote.intersection("world", "watersheds-eq-sw-extended")
+        remote.intersection("world", "watersheds-eq-sw-certain")
+        remote.intersection("world", "watersheds-eq-sw-all")
         remote.intersection("world", "particulate-matter")
         remote.intersection("world", "ecoregions")
 
@@ -73,13 +73,13 @@ def import_regionalized_lcimpact(biosphere='biosphere3'):
         )
         remote.intersection_as_new_geocollection(
             'world',
-            'watersheds-eq-sw-core',
-            'world-topo-watersheds-eq-sw-core'
+            'watersheds-eq-sw-certain',
+            'world-topo-watersheds-eq-sw-certain'
         )
         remote.intersection_as_new_geocollection(
             'world',
-            'watersheds-eq-sw-extended',
-            'world-topo-watersheds-eq-sw-extended'
+            'watersheds-eq-sw-all',
+            'world-topo-watersheds-eq-sw-all'
         )
         remote.intersection_as_new_geocollection(
             'world',
