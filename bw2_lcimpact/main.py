@@ -8,6 +8,18 @@ from .water import (
     WaterEcosystemQualityCore,
     WaterEcosystemQualityExtended,
 )
+from .climate import (
+    ClimateChangeHumanHealthCertain100Years,
+    ClimateChangeHumanHealthAll100Years,
+    ClimateChangeHumanHealthCertainInfinite,
+    ClimateChangeHumanHealthAllInfinite,
+    ClimateChangeTerrestrialEcosystemsCertain100Years,
+    ClimateChangeTerrestrialEcosystemsAll100Years,
+    ClimateChangeTerrestrialEcosystemsCertainInfinite,
+    ClimateChangeTerrestrialEcosystemsAllInfinite,
+    ClimateChangeAquaticEcosystemsAll100Years,
+    ClimateChangeAquaticEcosystemsAllInfinite,
+)
 from .land_use import (
     LandUseOccupationMarginal,
     LandUseOccupationAverage,
@@ -42,7 +54,10 @@ def import_global_lcimpact(biosphere='biosphere3'):
 @regionalized
 def import_regionalized_lcimpact(biosphere='biosphere3'):
     for method in METHODS:
-        method(biosphere).import_regional_method()
+        try:
+            method(biosphere).import_regional_method()
+        except NotImplemented:
+            pass
 
     try:
         remote.intersection("world", "watersheds-hh")
