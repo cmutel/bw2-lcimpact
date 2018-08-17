@@ -1,2 +1,3 @@
 brightway2
 wrapt
+xlrd

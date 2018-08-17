@@ -16,7 +16,7 @@ for dirpath, dirnames, filenames in os.walk('bw2_lcimpact'):
 
 setup(
     name='bw2-lcimpact',
-    version="0.1.1",
+    version="0.2",
     packages=packages,
     author="Chris Mutel",
     author_email="cmutel@gmail.com",
@@ -24,6 +24,7 @@ setup(
     install_requires=[
         "brightway2",
         "wrapt",
+        "xlrd",
     ],
     package_data={'bw2_lcimpact': ["data/*.*"]},
     url="https://github.com/cmutel/bw2-lcimpact",
