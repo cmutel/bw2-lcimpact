@@ -1,4 +1,7 @@
-from .pm import ParticulateMatterFormation
+from .pm import (
+    ParticulateMatterFormationAll,
+    ParticulateMatterFormationCertain,
+)
 from .water import (
     WaterHumanHealthMarginal,
     WaterHumanHealthAverage,
@@ -22,9 +25,10 @@ METHODS = (
     LandUseTransformationMarginalExtended,
     LandUseTransformationAverageCore,
     LandUseTransformationAverageExtended,
-    ParticulateMatterFormation,
-    WaterHumanHealthMarginal,
+    ParticulateMatterFormationAll,
+    ParticulateMatterFormationCertain,
     WaterHumanHealthAverage,
+    WaterHumanHealthMarginal,
     WaterEcosystemQualityCore,
     WaterEcosystemQualityExtended,
 )
