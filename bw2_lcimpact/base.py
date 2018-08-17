@@ -43,12 +43,15 @@ class LCIA:
 
     @property
     def metadata(self):
-        return {
+        obj = {
             'unit': self.unit,
             'description': self.description,
             'url': self.url,
             'geocollections': [self.geocollection]
         }
+        if self.geocollection:
+            obj['geocollections']: [self.geocollection]
+        return obj
 
     def import_global_method(self):
         self.method.register(**self.metadata)
