@@ -15,8 +15,8 @@ for dirpath, dirnames, filenames in os.walk('bw2_lcimpact'):
         packages.append(pkg)
 
 setup(
-    name='bw2-lcimpact',
-    version="0.2",
+    name='bw2_lcimpact',
+    version="0.2.1",
     packages=packages,
     author="Chris Mutel",
     author_email="cmutel@gmail.com",

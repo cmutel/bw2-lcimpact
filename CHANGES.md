@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.2 (XXX)
+### 0.2.1 (2018-08-22)
+
+Minor bugfix
+
+## 0.2 (2018-08-17)
 
 - Updated particulate matter
 - Added climate change
