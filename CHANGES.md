@@ -1,9 +1,10 @@
 # Changelog
 
-## 0.2 (XXX)
+## 0.2 (2018-08-17)
 
 - Updated particulate matter
 - Added climate change
+- Update terminology for uncertainty to 'certain' and 'all'
 
 ## 0.1 (2017-03-24)
 
