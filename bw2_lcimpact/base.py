@@ -47,10 +47,10 @@ class LCIA:
             'unit': self.unit,
             'description': self.description,
             'url': self.url,
-            'geocollections': [self.geocollection]
+            'geocollections': []
         }
         if self.geocollection:
-            obj['geocollections']: [self.geocollection]
+            obj['geocollections'] = [self.geocollection]
         return obj
 
     def import_global_method(self):
