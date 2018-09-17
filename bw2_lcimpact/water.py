@@ -6,21 +6,21 @@ import os
 We are assessing freshwater consumption, and so some water flows are excluded."""
 
 SURFACE_WATER = [
-    ('Fresh water (obsolete)', ('water', 'surface water')),
-    ('Water', ('water',)),
-    ('Water', ('water', 'surface water')),
-    ('Water, cooling, unspecified natural origin', ('natural resource', 'in water')),
-    ('Water, lake', ('natural resource', 'in water')),
-    ('Water, river', ('natural resource', 'in water')),
-    ('Water, turbine use, unspecified natural origin', ('natural resource', 'in water')),
-    ('Water, unspecified natural origin', ('natural resource', 'in water')),
+    ('Fresh water (obsolete)', ('water', 'surface water'), -1),
+    ('Water', ('water',), -1),
+    ('Water', ('water', 'surface water'), -1),
+    ('Water, cooling, unspecified natural origin', ('natural resource', 'in water'), 1),
+    ('Water, lake', ('natural resource', 'in water'), 1),
+    ('Water, river', ('natural resource', 'in water'), 1),
+    ('Water, turbine use, unspecified natural origin', ('natural resource', 'in water'), 1),
+    ('Water, unspecified natural origin', ('natural resource', 'in water'), 1),
 ]
 
 GROUND_WATER = [
-    ('Water', ('water', 'ground-')),
-    ('Water', ('water', 'ground-, long-term')),
-    ('Water, unspecified natural origin', ('natural resource', 'in ground')),
-    ('Water, well, in ground', ('natural resource', 'in water')),
+    ('Water', ('water', 'ground-'), -1),
+    # ('Water', ('water', 'ground-, long-term')),
+    ('Water, unspecified natural origin', ('natural resource', 'in ground'), 1),
+    ('Water, well, in ground', ('natural resource', 'in water'), 1),
 ]
 
 
@@ -35,9 +35,9 @@ class Water(LCIA):
 
         for act in self.db:
             name, categories = act['name'], tuple(act['categories'])
-            for x, y in flows:
+            for x, y, sign in flows:
                 if name == x and categories == y:
-                    yield act.key
+                    yield act.key, sign
 
 
 class WaterHumanHealthMarginal(Water):
@@ -62,8 +62,8 @@ class WaterHumanHealthMarginal(Water):
             }
 
     def global_cfs(self):
-        for key in self._water_flows():
-            yield((key, self.global_cf, "GLO"))
+        for key, sign in self._water_flows():
+            yield((key, self.global_cf * sign, "GLO"))
 
     @regionalized
     def regional_cfs(self):
@@ -75,10 +75,10 @@ class WaterHumanHealthMarginal(Water):
         with fiona.drivers():
             with fiona.open(self.vector_ds) as src:
                 for feat in src:
-                    for key in water_flows:
+                    for key, sign in water_flows:
                         yield (
                             key,
-                            feat['properties'][self.column] * 1e-6,
+                            feat['properties'][self.column] * 1e-6 * sign,
                             (self.geocollection, feat['properties']['BAS34S_ID'])
                         )
 
@@ -111,8 +111,8 @@ class WaterEcosystemQualityCertain(Water):
             }
 
     def global_cfs(self):
-        for key in self._water_flows(self._flows_label):
-            yield((key, self.global_cf, "GLO"))
+        for key, sign in self._water_flows(self._flows_label):
+            yield((key, self.global_cf * sign, "GLO"))
 
     @regionalized
     def regional_cfs(self):
@@ -124,10 +124,10 @@ class WaterEcosystemQualityCertain(Water):
         with fiona.drivers():
             with fiona.open(self.vector_ds) as src:
                 for feat in src:
-                    for key in water_flows:
+                    for key, sign in water_flows:
                         yield (
                             key,
-                            feat['properties'][self.column],
+                            feat['properties'][self.column] * sign,
                             (self.geocollection, feat['properties']['id'])
                         )
 
