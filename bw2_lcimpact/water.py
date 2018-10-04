@@ -78,7 +78,7 @@ class WaterHumanHealthMarginal(Water):
                     for key, sign in water_flows:
                         yield (
                             key,
-                            feat['properties'][self.column] * 1e-6 * sign,
+                            feat['properties'][self.column] * 1e-9 * sign, # Convert km3 to m3
                             (self.geocollection, feat['properties']['BAS34S_ID'])
                         )
 

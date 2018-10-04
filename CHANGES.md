@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3 (2018-09-25)
+
+Fix conversion from cubic kilometers
+
 ### 0.2.1 (2018-08-22)
 
 Minor bugfix
