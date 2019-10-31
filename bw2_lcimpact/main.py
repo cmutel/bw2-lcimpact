@@ -1,7 +1,4 @@
-from .pm import (
-    ParticulateMatterFormationAll,
-    ParticulateMatterFormationCertain,
-)
+from .pm import ParticulateMatterFormationAll, ParticulateMatterFormationCertain
 from .water import (
     WaterHumanHealthMarginal,
     WaterHumanHealthAverage,
@@ -46,13 +43,13 @@ METHODS = (
 )
 
 
-def import_global_lcimpact(biosphere='biosphere3'):
+def import_global_lcimpact(biosphere="biosphere3"):
     for method in METHODS:
         method(biosphere).import_global_method()
 
 
 @regionalized
-def import_regionalized_lcimpact(biosphere='biosphere3'):
+def import_regionalized_lcimpact(biosphere="biosphere3"):
     for method in METHODS:
         try:
             method(biosphere).import_regional_method()
@@ -67,29 +64,19 @@ def import_regionalized_lcimpact(biosphere='biosphere3'):
         remote.intersection("world", "ecoregions")
 
         remote.intersection_as_new_geocollection(
-            'world',
-            'watersheds-hh',
-            'world-topo-watersheds-hh'
+            "world", "watersheds-hh", "world-topo-watersheds-hh"
         )
         remote.intersection_as_new_geocollection(
-            'world',
-            'watersheds-eq-sw-certain',
-            'world-topo-watersheds-eq-sw-certain'
+            "world", "watersheds-eq-sw-certain", "world-topo-watersheds-eq-sw-certain"
         )
         remote.intersection_as_new_geocollection(
-            'world',
-            'watersheds-eq-sw-all',
-            'world-topo-watersheds-eq-sw-all'
+            "world", "watersheds-eq-sw-all", "world-topo-watersheds-eq-sw-all"
         )
         remote.intersection_as_new_geocollection(
-            'world',
-            'particulate-matter',
-            'world-topo-particulate-matter'
+            "world", "particulate-matter", "world-topo-particulate-matter"
         )
         remote.intersection_as_new_geocollection(
-            'world',
-            'ecoregions',
-            'world-topo-ecoregions'
+            "world", "ecoregions", "world-topo-ecoregions"
         )
     except:
         print("Can't import data from pandarus remote")

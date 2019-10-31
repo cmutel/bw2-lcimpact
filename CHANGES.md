@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.3.1 (2019-10-31)
+
+Update for new `fiona` calling syntax.
+
 ## 0.3 (2018-09-25)
 
 Fix conversion from cubic kilometers

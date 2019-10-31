@@ -8,7 +8,7 @@ Check to make sure that the field `BAS34S_ID` is unique:
 fp = '/Users/cmutel/Box Sync/LC-Impact (Chris Mutel)/12-water consumption/Water stress HH Spatial layers/shapefiles/LC_IMPACT_CF_.shp'
 import fiona
 
-with fiona.drivers():
+with fiona.Env():
     with fiona.open(fp) as source:
         values = {o['properties']['BAS34S_ID'] for o in source}
         print(len(values), len(source))
@@ -29,7 +29,7 @@ to_mp = lambda o: MultiPolygon([o]) if isinstance(obj, Polygon) else o
 
 cfs = defaultdict(list)
 
-with fiona.drivers():
+with fiona.Env():
     with fiona.open(fp) as source:
         for feat in source:
             cfs[feat['properties']['BAS34S_ID']].append(feat)
@@ -55,7 +55,7 @@ for lst in cfs.values():
     obj['geometry'] = mapping(to_mp(better_union([shape(o['geometry']).buffer(0) for o in lst])))
     processed_cfs.append(obj)
 
-with fiona.drivers():
+with fiona.Env():
     with fiona.open(fp) as source:
         meta = source.meta
         meta['driver'] = 'GPKG'
@@ -201,7 +201,7 @@ to_mp = lambda o: MultiPolygon([o]) if isinstance(obj, Polygon) else o
 
 cfs = defaultdict(list)
 
-with fiona.drivers():
+with fiona.Env():
     with fiona.open(fp) as source:
         meta = source.meta
         meta['driver'] = 'GeoJSON'
@@ -224,7 +224,7 @@ for lst in cfs.values():
     obj['geometry'] = mapping(to_mp(better_union([shape(o['geometry']).buffer(0) for o in lst])))
     processed_cfs.append(obj)
 
-with fiona.drivers():
+with fiona.Env():
     with fiona.open('land_use.merged.json', 'w', **meta) as sink:
         for f in processed_cfs:
             sink.write(f)
@@ -298,7 +298,7 @@ for dirpath, files in meta.items():
             for feat in src:
                 cfs[column][feat['properties']['eco_code']] = float(feat['properties']['CF'] or 0.)
 
-with fiona.drivers():
+with fiona.Env():
     with fiona.open('land_use.merged.json') as source:
         meta = source.meta.copy()
 
