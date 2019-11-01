@@ -28,7 +28,8 @@ setup(
     ],
     package_data={'bw2_lcimpact': ["data/*.*"]},
     url="https://github.com/cmutel/bw2-lcimpact",
-    long_description=open('README.rst', encoding='utf-8').read(),
+    long_description=open('README.md', encoding='utf-8').read(),
+    long_description_content_type="text/markdown",
     description=('LC IMPACT regionalized LCIA method for Brightway2'),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
