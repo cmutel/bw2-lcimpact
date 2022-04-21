@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4 (2022-04-21)
+
+* Compatibility with Brightway 2.5
+* Don't require Brightway2 as a dependency
+
 ### 0.3.1 (2019-10-31)
 
 Update for new `fiona` calling syntax.

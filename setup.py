@@ -16,13 +16,12 @@ for dirpath, dirnames, filenames in os.walk('bw2_lcimpact'):
 
 setup(
     name='bw2_lcimpact',
-    version="0.3.1",
+    version="0.4",
     packages=packages,
     author="Chris Mutel",
     author_email="cmutel@gmail.com",
     license=open('LICENSE.txt', encoding='utf-8').read(),
     install_requires=[
-        "brightway2",
         "wrapt",
         "xlrd",
     ],
