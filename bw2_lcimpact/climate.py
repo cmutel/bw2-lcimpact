@@ -1,6 +1,8 @@
-from .base import LCIA, data_dir
 import os
+
 import xlrd
+
+from .base import LCIA, data_dir
 
 CATEGORIES = {
     ("air",),
@@ -37,7 +39,7 @@ class ClimateChange(LCIA):
         return
 
     def regional_cfs(self):
-        raise NotImplemented
+        raise NotImplementedError
 
     def global_cfs(self):
         cfs = {x: y for x, y in get_values_by_column(self.column)}
