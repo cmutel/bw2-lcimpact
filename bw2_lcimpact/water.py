@@ -1,5 +1,6 @@
-from .base import LCIA, data_dir, fiona, regionalized, geocollections
 import os
+
+from .base import LCIA, data_dir, fiona, geocollections, regionalized
 
 """When is water not water? When it is in water!
 

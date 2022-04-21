@@ -1,5 +1,6 @@
-from .base import LCIA, data_dir, fiona, regionalized, geocollections
 import os
+
+from .base import LCIA, data_dir, fiona, geocollections, regionalized
 
 GLOBAL_CFS = {
     "Particulates, < 2.5 um": 6.29e-4,

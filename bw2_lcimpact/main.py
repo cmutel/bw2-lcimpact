@@ -1,31 +1,31 @@
-from .pm import ParticulateMatterFormationAll, ParticulateMatterFormationCertain
-from .water import (
-    WaterHumanHealthMarginal,
-    WaterHumanHealthAverage,
-    WaterEcosystemQualityCertain,
-    WaterEcosystemQualityAll,
-)
+from .base import regionalized, remote
 from .climate import (
-    ClimateChangeHumanHealthCertain100Years,
-    ClimateChangeHumanHealthAll100Years,
-    ClimateChangeHumanHealthCertainInfinite,
-    ClimateChangeHumanHealthAllInfinite,
-    ClimateChangeTerrestrialEcosystemsCertain100Years,
-    ClimateChangeTerrestrialEcosystemsAll100Years,
-    ClimateChangeTerrestrialEcosystemsCertainInfinite,
-    ClimateChangeTerrestrialEcosystemsAllInfinite,
     ClimateChangeAquaticEcosystemsAll100Years,
     ClimateChangeAquaticEcosystemsAllInfinite,
+    ClimateChangeHumanHealthAll100Years,
+    ClimateChangeHumanHealthAllInfinite,
+    ClimateChangeHumanHealthCertain100Years,
+    ClimateChangeHumanHealthCertainInfinite,
+    ClimateChangeTerrestrialEcosystemsAll100Years,
+    ClimateChangeTerrestrialEcosystemsAllInfinite,
+    ClimateChangeTerrestrialEcosystemsCertain100Years,
+    ClimateChangeTerrestrialEcosystemsCertainInfinite,
 )
 from .land_use import (
-    LandUseOccupationMarginal,
     LandUseOccupationAverage,
-    LandUseTransformationMarginalCertain,
-    LandUseTransformationMarginalAll,
-    LandUseTransformationAverageCertain,
+    LandUseOccupationMarginal,
     LandUseTransformationAverageAll,
+    LandUseTransformationAverageCertain,
+    LandUseTransformationMarginalAll,
+    LandUseTransformationMarginalCertain,
 )
-from .base import remote, regionalized
+from .pm import ParticulateMatterFormationAll, ParticulateMatterFormationCertain
+from .water import (
+    WaterEcosystemQualityAll,
+    WaterEcosystemQualityCertain,
+    WaterHumanHealthAverage,
+    WaterHumanHealthMarginal,
+)
 
 METHODS = (
     LandUseOccupationMarginal,
