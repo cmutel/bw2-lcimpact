@@ -1,10 +1,11 @@
-from brightway2 import Database, Method
 import os
+
 import wrapt
+from bw2data import Database, Method
 
 try:
-    from bw2regional import geocollections, remote
     import fiona
+    from bw2regional import geocollections, remote
 except ImportError:
     fiona = None
     geocollections, remote = None, None
