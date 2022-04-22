@@ -24,6 +24,7 @@ setup(
     install_requires=[
         "wrapt",
         "xlrd",
+        'tqdm',
     ],
     package_data={'bw2_lcimpact': ["data/*.*"]},
     url="https://github.com/cmutel/bw2-lcimpact",

@@ -26,6 +26,7 @@ from .water import (
     WaterHumanHealthAverage,
     WaterHumanHealthMarginal,
 )
+from tqdm import tqdm
 
 METHODS = (
     LandUseOccupationMarginal,
@@ -44,25 +45,26 @@ METHODS = (
 
 
 def import_global_lcimpact(biosphere="biosphere3"):
-    for method in METHODS:
+    for method in tqdm(METHODS):
         method(biosphere).import_global_method()
 
 
 @regionalized
 def import_regionalized_lcimpact(biosphere="biosphere3"):
-    for method in METHODS:
-        try:
-            method(biosphere).import_regional_method()
-        except NotImplemented:
-            pass
+    print('Importing methods')
+    for method in tqdm(METHODS):
+        method(biosphere).import_regional_method()
 
+    print('Setting up GIS data')
     try:
+        print("Intersections")
         remote.intersection("world", "watersheds-hh")
         remote.intersection("world", "watersheds-eq-sw-certain")
         remote.intersection("world", "watersheds-eq-sw-all")
         remote.intersection("world", "particulate-matter")
         remote.intersection("world", "ecoregions")
 
+        print("Geocollections")
         remote.intersection_as_new_geocollection(
             "world", "watersheds-hh", "world-topo-watersheds-hh"
         )
