@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1 (2022-04-22)
+
+* Make import reg CFs also import all site-generic CFs
+
 ## 0.4 (2022-04-21)
 
 * Compatibility with Brightway 2.5
