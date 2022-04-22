@@ -39,7 +39,8 @@ class ClimateChange(LCIA):
         return
 
     def regional_cfs(self):
-        raise NotImplementedError
+        for obj in self.global_cfs():
+            yield obj
 
     def global_cfs(self):
         cfs = {x: y for x, y in get_values_by_column(self.column)}
