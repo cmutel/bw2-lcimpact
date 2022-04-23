@@ -1,8 +1,11 @@
 # Changelog
 
-## 0.4.2 (DEV)
+## 0.4.2 (2022-04-23)
 
 * Add progress bars
+* Separate intersection creation
+* Add climate change to main import functions
+* Switch to openpyxl
 
 ## 0.4.1 (2022-04-22)
 

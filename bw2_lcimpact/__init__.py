@@ -4,7 +4,7 @@ __all__ = (
     "create_regionalized_intersections",
 )
 
-__version__ = (0, 4, 1)
+__version__ = (0, 4, 2)
 
 from .main import (
     create_regionalized_intersections,
