@@ -1,6 +1,6 @@
 import os
-
-import xlrd
+from collections import defaultdict
+from openpyxl import load_workbook
 
 from .base import LCIA, data_dir
 
@@ -13,23 +13,22 @@ CATEGORIES = {
 }
 
 
-def _get_column(ws, index):
-    return [
-        (ws.cell(row, 0).value, ws.cell(row, index).value) for row in range(1, ws.nrows)
-    ]
-
-
 def get_values_by_column(column):
-    wb = xlrd.open_workbook(os.path.join(data_dir, "climate-change.xlsx"))
-    mapping_data = _get_column(wb.sheet_by_name("mapping"), 1)
-    mapping = {x: [] for x, y in mapping_data}
-    for x, y in mapping_data:
-        mapping[x].append(y)
+    wb = load_workbook(os.path.join(data_dir, "climate-change.xlsx"), data_only=True, read_only=True)
+    mapping = defaultdict(list)
+    for key, value in wb['mapping'].iter_rows(min_col=1, max_col=2, values_only=True):
+        if key:
+            mapping[key].append(value)
 
-    cf_data = _get_column(wb.sheet_by_name("cfs"), column)
-    for name, value in cf_data:
-        for mapped_name in mapping.get(name, []):
-            yield (mapped_name, value)
+    labels = [val[0] for val in wb['cfs'].iter_rows(min_col=1, max_col=1, min_row=2, values_only=True) if val is not None]
+    values = [val[0] for val in wb['cfs'].iter_rows(min_col=column, max_col=column, min_row=2, values_only=True) if val is not None]
+
+    cfs = {}
+    for label, value in zip(labels, values):
+        for mapped in mapping.get(label, []):
+            cfs[mapped] = value
+
+    return cfs
 
 
 class ClimateChange(LCIA):
@@ -43,7 +42,7 @@ class ClimateChange(LCIA):
             yield obj
 
     def global_cfs(self):
-        cfs = {x: y for x, y in get_values_by_column(self.column)}
+        cfs = get_values_by_column(self.column + 1)
 
         for flow in self.db:
             if flow["name"] in cfs and tuple(flow["categories"]) in CATEGORIES:

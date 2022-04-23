@@ -23,7 +23,7 @@ setup(
     license=open('LICENSE.txt', encoding='utf-8').read(),
     install_requires=[
         "wrapt",
-        "xlrd",
+        "openpyxl",
         'tqdm',
     ],
     package_data={'bw2_lcimpact': ["data/*.*"]},
