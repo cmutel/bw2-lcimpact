@@ -30,6 +30,16 @@ from .water import (
 )
 
 METHODS = (
+    ClimateChangeAquaticEcosystemsAll100Years,
+    ClimateChangeAquaticEcosystemsAllInfinite,
+    ClimateChangeHumanHealthAll100Years,
+    ClimateChangeHumanHealthAllInfinite,
+    ClimateChangeHumanHealthCertain100Years,
+    ClimateChangeHumanHealthCertainInfinite,
+    ClimateChangeTerrestrialEcosystemsAll100Years,
+    ClimateChangeTerrestrialEcosystemsAllInfinite,
+    ClimateChangeTerrestrialEcosystemsCertain100Years,
+    ClimateChangeTerrestrialEcosystemsCertainInfinite,
     LandUseOccupationMarginal,
     LandUseOccupationAverage,
     LandUseTransformationMarginalCertain,
@@ -52,7 +62,6 @@ def import_global_lcimpact(biosphere="biosphere3"):
 
 @regionalized
 def import_regionalized_lcimpact(biosphere="biosphere3"):
-    print("Importing methods")
     for method in tqdm(METHODS):
         method(biosphere).import_regional_method()
 
