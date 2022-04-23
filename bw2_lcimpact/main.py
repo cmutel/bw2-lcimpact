@@ -1,3 +1,5 @@
+from tqdm import tqdm
+
 from .base import regionalized, remote
 from .climate import (
     ClimateChangeAquaticEcosystemsAll100Years,
@@ -26,7 +28,6 @@ from .water import (
     WaterHumanHealthAverage,
     WaterHumanHealthMarginal,
 )
-from tqdm import tqdm
 
 METHODS = (
     LandUseOccupationMarginal,
@@ -51,11 +52,13 @@ def import_global_lcimpact(biosphere="biosphere3"):
 
 @regionalized
 def import_regionalized_lcimpact(biosphere="biosphere3"):
-    print('Importing methods')
+    print("Importing methods")
     for method in tqdm(METHODS):
         method(biosphere).import_regional_method()
 
-    print('Setting up GIS data')
+
+@regionalized
+def create_regionalized_intersections():
     try:
         print("Intersections")
         remote.intersection("world", "watersheds-hh")
